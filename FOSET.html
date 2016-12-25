@@ -1,0 +1,83 @@
+<html>
+<body>
+<a href="index.html">[↑TOP]</a>
+<br>
+<hr size="0">
+<h3>/FOSET</h3>
+<hr size="0">
+
+<!------------------------------------>
+<h4>書式</h4>
+
+/FOSET <i>vname</i>, <i>iname</i>, <b>fix</b>,   <i>len</i>, <i>scale</i>;<br>
+/FOSET <i>vname</i>, <i>iname</i>, <b>ufix</b>,  <i>len</i>, <i>scale</i>, <i>offset</i>;<br>
+/FOSET <i>vname</i>, <i>iname</i>, <b>log</b>,   <i>len</i>, <i>mlen</i>,  <i>scale</i>;<br>
+/FOSET <i>vname</i>, <i>iname</i>, <b>float</b>, <i>len</i>, <i>mlen</i>,  <i>rmode</i>;<br>
+
+<br>
+
+<hr size="0">
+
+
+<!------------------------------------>
+<h4>引数</h4>
+
+  <dl compact="compact">
+  <dt><i>vname</i></dt>
+  <dd>  :  データフロー記述部変数名  </dd>
+
+  <dt><i>iname</i></dt>
+  <dd>  :  <i>vname</i>に対応するインタフェース引数 </dd>
+
+  <dt><b>fix, ufix, log, float</b></dt>
+  <dd>  :  <i>vname</i>の型</dd>
+
+  <dt><i>len</i></dt>
+  <dd>  :  <i>vname</i>ビット長</dd>
+
+  <dt><i>mlen</i> </dt>
+  <dd>  :  log,float型の仮数部ビット長 </dd>
+
+  <dt><i>scale</i> </dt>
+  <dd>  :  fix,ufix,log型に変換する時のスケーリング係数 </dd>
+
+  <dt><i>offset</i> </dt>
+  <dd>  :  ufix型に変換する時のオフセット値 </dd>
+
+  <dt><i>rmode</i> </dt>
+  <dd>  :  丸めモード(省略可) FORCE1(force to one), TOEVEN(to the nearest even), TRUNC(truncation)が指定可能. 省略時はTOEVEN. </dd>
+  </dl>
+
+
+<hr size="0">
+
+<!------------------------------------>
+<h4>記述例</h4>
+<pre>
+/FOSET xi[3], x[][], fix,   32,       (pow(2.0,32.0)/64.0);
+/FOSET yi[3], x[][], ufix,  32,       (pow(2.0,32.0)/64.0), (32.0);
+/FOSET hi,    h[],   log,   17,    8, (pow(2.0,60.0)/(1.0/1024.0));
+/FOSET hi[3], h[][], float, 26,   16;
+</pre>
+
+
+<hr size="0">
+
+<!------------------------------------>
+<h4>概要</h4>
+
+　/FOSETはデータフローユニットの計算結果を回収するための演算結果レジスタのレイアウトを指定します.
+
+<hr size="0">
+
+<!------------------------------------>
+<h4>参照</h4>
+
+<hr size="0">
+<I>Change Log</I>
+<ul>
+<li> 2004.08.16 : the first edition
+</ul>
+
+</body>
+</html>

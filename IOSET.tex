@@ -1,0 +1,342 @@
+% ------------------------------------
+\section{インターフェース記述部}
+% ------------------------------------
+
+ここは以下の各節にわかれています.
+\begin{itemize}
+\item {\bf /JPSET}
+\item {\bf /IPSET}
+\item {\bf /FOSET}
+\item {\bf /VALSET}
+\item {\bf /CONST\_FLOAT}
+\item {\bf /CONST\_LOG}
+\item {\bf /NPIPE}
+\item {\bf /NVMP}
+\end{itemize}
+
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{\bf /JPSET}
+\subsubsection{名前}
+{\bf /JPSET}
+
+\subsubsection{書式}
+\begin{verbatim}
+/JPSET <vname>, <iname>, fix,   <len>, <scale>;
+/JPSET <vname>, <iname>, ufix,  <len>, <scale>, <offset>;
+/JPSET <vname>, <iname>, log,   <len>, <mlen>,  <scale>;
+/JPSET <vname>, <iname>, float, <len>, <mlen>,  <rmode>;
+\end{verbatim}
+
+\subsubsection{引数}
+\begin{verbatim}
+  <vname>       : データフロー部記述部変数名
+  <iname>       : <vname>に対応するインタフェースの引数名
+  fix/ufix/log/float :  <vname>の数値フォーマット
+  <len>         : <vname>の総ビット幅
+  <mlen>        : <vname>がlog,floatの場合の仮数部ビット幅
+  <scale>       : 型変換のためのスケール係数
+  <offset>      : 型変換(ufix)のためのオフセット
+  <rmode>       : 丸めモード. 省略可能. 省略時の丸めはFORCE1とする.
+\end{verbatim}
+
+\subsubsection{記述例}
+\begin{verbatim}
+/JPSET xj[3], x[][], fix,   32,    (pow(2.0,32.0)/64.0);
+/JPSET yj[3], x[][], ufix,  32,    (pow(2.0,32.0)/64.0), (32.0);
+/JPSET mj,    m[],   log,   17,    8, (pow(2.0,60.0)/(1.0/1024.0));
+/JPSET hj[3], x[][], float, 26,   16;
+\end{verbatim}
+
+
+\subsubsection{説明}
+
+/JPSETはJPSETからデータフローユニットへ供給されるデータとインタフェイ
+スプログラムの引数との関連付けを指定します.  記述例第一行目は, インタ
+フェイスプログラムに入力されたn$\times$3要素の倍精度浮動小数点形式数
+\verb$x[][]$をデータフローユニット変数\verb$xj[3]$に対応させています. 
+また\verb$xj$のフォーマットは固定小数点形式(2の補数)です.
+
+x[3]が実際のメモリバスにどのように配置されるのかについて少しだけ説明し
+ておきます.  
+x[3]はメモリバスに順番に配置されていきます.
+まずメモリバスの0ビット目から31ビット目までに\verb$x[0]$が配置されます.
+次の32ビット目から63 ビット目までに\verb$x[1]$が配置されます. そして
+64ビット目から95ビット目までに\verb$x[2]$が配置されます.
+これは, PGDLをpgppに通すことで確認できます.
+例えば\verb$list.sph$という名前のPGDLファイルがあったとすると,
+\begin{verbatim}
+[shell] pgpp list.sph
+\end{verbatim}
+としてプリプロセッサに通して出力された低レベル
+PGDL(\verb$list.sph.pgpp$)を確認してみるとわかります. PGPGプリプロセス
+の詳細についてはpgppの章を参照してください.
+
+
+3行目はデータフローユニット変数\verb$mj$のフォーマットを17ビット対数形式に指定
+した例です.  また, 対数形式の仮数部語長を8ビットに指定しています.
+\verb$mj$はスカラ変数なので, インタフェイス変数は\verb$m[]$のように1次
+元配列でなければなりません.
+
+4行目は,  \verb$hj[3]$のフォーマットを26ビット浮動小数点形式に指定した例です.
+また, 仮数部を16ビットに指定し, 丸めの指定は省略しています.
+丸めの指定を省略した場合は, Truncation(切り捨て, つまり丸めない)をします.
+
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{\bf /IPSET}
+\subsubsection{名前}
+{\bf /IPSET}
+
+\subsubsection{書式}
+\begin{verbatim}
+/IPSET <vname>, <iname>, fix, <len>, <scale>;
+/IPSET <vname>, <iname>, ufix,  <len>, <scale>, <offset>;
+/IPSET <vname>, <iname>, log,   <len>, <mlen>,  <scale>;
+/IPSET <vname>, <iname>, float, <len>, <mlen>,  <rmode>;
+\end{verbatim}
+
+\subsubsection{引数}
+\begin{verbatim}
+  <vname>       : データフロー部記述部変数名
+  <iname>       : <vname>に対応するインタフェースの引数名
+  fix/ufix/log/float :  <vname>の数値フォーマット
+  <len>         : <vname>の総ビット幅
+  <mlen>        : <vname>がlog,floatの場合の仮数部ビット幅
+  <scale>       : 型変換のためのスケール係数
+  <offset>      : 型変換(ufix)のためのオフセット
+  <rmode>       : 丸めモード. 省略可能. 省略時の丸めはFORCE1とする.
+\end{verbatim}
+
+\subsubsection{記述例}
+\begin{verbatim}
+/IPSET xj[3], x[][], fix,   32,    (pow(2.0,32.0)/64.0);
+/IPSET yj[3], x[][], ufix,  32,    (pow(2.0,32.0)/64.0), (32.0);
+/IPSET mj,    m[],   log,   17,    8, (pow(2.0,60.0)/(1.0/1024.0));
+/IPSET hj[3], x[][], float, 26,   16;
+\end{verbatim}
+
+\subsubsection{説明}
+/IPSETはIPSETからデータフローユニットへ供給されるデータとインター
+フェースプログラムの引数との関連付けを指定します. 
+/IPSETの書式は/JPSETのそれと同様です.
+
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{\bf /FOSET}
+
+\subsubsection{名前}
+{\bf /FOSET}
+
+\subsubsection{書式}
+\begin{verbatim}
+/FOSET <vname>, <iname>, fix,   <len>, <scale>;
+/FOSET <vname>, <iname>, ufix,  <len>, <scale>, <offset>;
+/FOSET <vname>, <iname>, log,   <len>, <mlen>,  <scale>;
+/FOSET <vname>, <iname>, float, <len>, <mlen>,  <rmode>;
+\end{verbatim}
+
+\subsubsection{引数}
+\begin{verbatim}
+  <vname>       : データフロー部記述部変数名
+  <iname>       : <vname>に対応するインタフェースの引数名
+  fix/ufix/log/float :  <vname>の数値フォーマット
+  <len>         : <vname>の総ビット幅
+  <mlen>        : <vname>がlog,floatの場合の仮数部ビット幅
+  <scale>       : 型変換のためのスケール係数
+  <offset>      : 型変換(ufix)のためのオフセット
+  <rmode>       : 丸めモード. 省略可能. 省略時の丸めはFORCE1とする.
+\end{verbatim}
+
+\subsubsection{記述例}
+\begin{verbatim}
+#define xscale (pow(2.0,32.0)/64.0)
+#define fscale (-xscale*xscale/mscale)
+#define fofset (32.0)
+/FOSET sx[3],  a[][],  fix,   64,  fscale;
+/FOSET sx[3],  a[][],  ufix,  64,  fscale, foffset;
+/FOSET sx[3],  a[][],  log,   17,  8, fscale;
+/FOSET sx[3],  a[][],  float, 32,  23, fscale;
+\end{verbatim}
+
+\subsubsection{説明}
+/FOSETはデータフローユニットの計算結果であるFOSETと
+フェースプログラムの引数との関連付けを指定します.  
+記述方法は/IPSET,/JPSETと同様です.
+
+
+%\begin{figure}
+%\begin{center}
+%\rotatebox{0}{
+%  \scalebox{1.}{
+%    \includegraphics{./IMAGE/pgpg_pipelineunit2.eps}
+%  }
+%}
+%\end{center}
+%\caption[]{pipeline unit}\label{fig:pgpg_pipelineunit2}
+%\end{figure}
+%ここまでの/JPSET, /IPSET, /FOSETの指定によるパイプラインユニットは
+%図(\ref{fig:pgpg_pipelineunit2})のようになります.
+
+
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{\bf /VALSET}
+\subsubsection{名前}
+{\bf /VALSET}
+
+\subsubsection{書式}
+\begin{verbatim}
+/VALSET <vname>, <value>, <len>;
+\end{verbatim}
+
+\subsubsection{引数}
+\begin{verbatim}
+  <vname>      :  データフロー記述部変数名
+  <value>      :  <vname>に指定する定数値(ビット列を16進数で記述する)
+  <msb>        :  ビット長
+\end{verbatim}
+
+\subsubsection{記述例}
+\begin{verbatim}
+/VALSET fxofst, 0x9700, 17;
+\end{verbatim}
+
+\subsubsection{説明}
+/VALSETで指定した変数はデータフロー記述部中で定数となります.  /VALSET
+は定数をビット列表記(バイナリ表記)で指定します.  floatやlogフォーマッ
+トの定数を/VALSETを用いて指定する場合, プログラマはどのようなビット表
+記を指定すべきか注意を払う必要がありあます(つまり, 型変換後のビット列
+は紙と鉛筆と電卓を用いて{\bf ''あなた自身が''} 計算しなければな
+りません).  これがとても面倒に思われるプログラマのために, 定数を指定す
+る別な方法として, /CONST\_FLOAT と /CONST\_LOG を用意してあります.
+
+/VALSETはプリプロセッサpgppによって次のような低レベルPGDLよう/VALSETに変換されます.
+低レベルPGDLでは/VALSETのMSBビット位置およびLSBビット位置を指定することがわかります.
+
+\verb$/VALSET fxofst, 0x9700, 0, 16$
+
+
+
+
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{\bf /CONST\_FLOAT}
+\subsubsection{名前}
+{\bf /CONST\_FLOAT}
+
+\subsubsection{書式}
+\begin{verbatim}
+/CONST_FLOAT <vname>, <value>,  <len>, <mlen>;
+\end{verbatim}
+
+\subsubsection{引数}
+\begin{verbatim}
+  <vname>      :  データフロー記述部変数名
+  <value>      :  定数値 (実数で指定します)
+  <len>        :  浮動小数点ビット長
+  <mlen>       :  仮数部ビット長
+\end{verbatim}
+
+\subsubsection{記述例}
+\begin{verbatim}
+/CONST\_FLOAT cx, -1.5,  26, 16;
+\end{verbatim}
+
+\subsubsection{説明}
+
+
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{\bf /CONST\_LOG}
+\subsubsection{名前}
+{\bf /CONST\_LOG}
+
+\subsubsection{書式}
+\begin{verbatim}
+/CONST_LOG <vname>, <value>,  <len>, <mlen>, <scale>;
+\end{verbatim}
+
+\subsubsection{引数}
+\begin{verbatim}
+  <vname>      :  データフロー記述部変数名
+  <value>      :  定数値 (実数で指定します)
+  <len>        :  浮動小数点ビット長
+  <mlen>       :  仮数部ビット長
+\end{verbatim}
+
+\subsubsection{記述例}
+\begin{verbatim}
+/CONST_LOG fofst, 1.0e+8,  26, 16, (pow(2.0,32.0)/64.0);
+\end{verbatim}
+
+\subsubsection{説明}
+/CONST\_LOGは定数をデータフロー記述部で使用するための定数指定コマンドです.
+基本的な使用目的は/VALSETと同じです. また/CONST\_LOGはpgpgプリプロセッサ(pgpp)によって
+/VALSETへ変換されます.
+
+/CONST\_LOGは定数値を実数で指定できます.
+指定した実数は対数形式ビット列に変換されます.
+
+上記の記述例はpgpgプリプロセッサによって
+次のような/VALSETへ変換されます.
+
+\verb$/VALSET fofst,0x134934f,0,25$
+
+
+
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{\bf /NPIPE}
+\subsubsection{名前}
+{\bf /NPIPE}
+
+\subsubsection{書式}
+\begin{verbatim}
+/NPIPE <num>;
+\end{verbatim}
+
+\subsubsection{引数}
+\begin{verbatim}
+  <num>      :  パイプラインの本数
+\end{verbatim}
+
+\subsubsection{記述例}
+\begin{verbatim}
+/NPIPE 25;
+\end{verbatim}
+
+\subsubsection{説明}
+/NPIPEはパイプラインの本数を指定します.
+
+
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{\bf /NVMP}
+\subsubsection{名前}
+{\bf /NVMP}
+
+\subsubsection{書式}
+\begin{verbatim}
+/NVMP <num>;
+\end{verbatim}
+
+\subsubsection{引数}
+\begin{verbatim}
+  <num>      :  仮想パイプラインの本数
+\end{verbatim}
+
+\subsubsection{記述例}
+\begin{verbatim}
+/NVMP 3;
+\end{verbatim}
+
+\subsubsection{説明}
+/NVMPは仮想パイプラインの本数を指定します.
+仮想パイプラインを指定するためには,
+メモリバスから一組の/JPSETがデータフローに入力が完了するまでに
+/NVMPで指定した数だけのクロック数を要することが必要となります.
+
+\clearpage
+

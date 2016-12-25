@@ -1,0 +1,82 @@
+<html>
+<body>
+<a href="index.html">[↑TOP]</a>
+<br>
+<hr size="0">
+<h3>/CONST_LOG</h3>
+<hr size="0">
+
+<!------------------------------------>
+<h4>書式</h4>
+
+/CONST_LOG <i>vname</i>, <i>value</i>,  <i>len</i>, <i>mlen</i>, <i>scale</i>, ;
+<br>
+
+<hr size="0">
+
+
+<!------------------------------------>
+<h4>引数</h4>
+
+  <dl compact="compact">
+  <dt><i>vname</i></dt>
+  <dd>  :  データフロー記述部変数名  </dd>
+
+  <dt><i>value</i></dt>
+  <dd>  :  定数値 (実数で指定します) </dd>
+
+  <dt><i>len</i>  </dt>
+  <dd>  :  浮動小数点ビット長        </dd>
+
+  <dt><i>mlen</i> </dt>
+  <dd>  :  仮数部ビット長            </dd>
+
+  <dt><i>scale</i> </dt>
+  <dd>  :  スケーリング係数          </dd>
+  </dl>
+
+<hr size="0">
+
+<!------------------------------------>
+<h4>記述例</h4>
+<pre>
+/CONST_LOG cx,    -1.5,  17, 8, (pow(2.0,32.0));
+/CONST_LOG cm, 7.77e-7, 14 , 5, (pow(2.0,64.0));
+</pre>
+
+<hr size="0">
+
+<!------------------------------------>
+<h4>概要</h4>
+
+　/CONST_LOGは定数をデータフロー記述部で使用するための定数指定コマンド
+です.  基本的な使用目的は/VALSETと同じです. 
+/VALSETとの違いは/CONST_LOGは定数値を実数で指定できることです.
+指定した実数定数は対数型ビット列に変換されます.
+<br><br>
+
+　また/CONST_LOGはpgpgプリプロセッサ(pgpp)によって/VALSETへ変換されます.
+先の記述例はpgpgプリプロセッサによって一度次のような/VALSETへ変換されます.
+<br><br>
+
+<pre>
+/VALSET cx, 0x1a095, 17;
+/VALSET cm, 0x1576,  14;
+</pre>
+
+
+<hr size="0">
+
+<!------------------------------------>
+<h4>参照</h4>
+/VALSET<br>
+/CONST_FLOAT<br>
+
+<hr size="0">
+<I>Change Log</I>
+<ul>
+<li> 2004.08.16 : the first edition
+</ul>
+
+</body>
+</html>

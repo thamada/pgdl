@@ -1,0 +1,157 @@
+<html>
+<body>
+<a href="index.html">[↑TOP]</a>
+<br>
+<hr size="0">
+<h3>pg_log_unsigned_add_itp : 対数型 符号なし加算(Interpolation)</h3>
+<hr size="0">
+
+<!------------------------------------>
+<h4>書式</h4>
+
+pg_log_unsigned_add_itp(<i>x</i>, <i>y</i>, <i>z</i>, <i>NLOG</i>, <i>NMAN</i>, <i>NST</i>, <i>NCUT</i>);<br>
+
+<hr size="0">
+
+
+<!------------------------------------>
+<h4>引数</h4>
+
+<br>
+
+  <dl compact="compact">
+  <dt><i>x</i></dt>
+  <dd>  :  入力  </dd>
+
+  <dt><i>y</i></dt>
+  <dd>  :  入力  </dd>
+
+  <dt><i>z</i></dt>
+  <dd>  :  出力  </dd>
+
+  <dt><i>NLOG</i></dt>
+  <dd>  : 対数ワードビット幅 </dd>
+
+  <dt><i>NMAN</i></dt>
+  <dd>  :  仮数部(精度)ビット幅</dd>
+
+  <dt><i>NST</i></dt>
+  <dd>  :  パイプラインステージ数</dd>
+
+  <dt><i>NCUT</i></dt>
+  <dd>  :  補間区間ビット幅</dd>
+  </dl>
+
+<hr size="0">
+
+<!------------------------------------>
+<h4>記述例</h4>
+<pre>
+pg_log_unsigned_add_itp(x, y, z, 14,  5, 1, 3);
+pg_log_unsigned_add_itp(x, y, z, 17,  8, 1, 6);
+pg_log_unsigned_add_itp(x, y, z, 20, 11, 1, 8);
+</pre>
+
+<hr size="0">
+
+<!------------------------------------>
+<h4>概要</h4>
+
+  対数形式数 x, y との符号無し加算<br>
+  内部関数テーブルは1st polynominalでinterpolation<br>
+
+<hr size="0">
+<h4>パイプラインマップ(Altera/Xilinxで切り替え. 以下はXilinx用)</h4>
+<pre>
+NST 1 : 1[-], 2[-], 3[-], 4[-], 5[-], 6[-], 7[-], 8[-], 9[O]
+NST 2 : 1[-], 2[-], 3[O], 4[-], 5[-], 6[-], 7[-], 8[-], 9[O]
+NST 3 : 1[-], 2[-], 3[O], 4[-], 5[-], 6[O], 7[-], 8[-], 9[O]
+NST 4 : 1[-], 2[O], 3[O], 4[-], 5[-], 6[O], 7[-], 8[-], 9[O]
+NST 5 : 1[-], 2[O], 3[O], 4[-], 5[-], 6[O], 7[O], 8[-], 9[O]
+NST 6 : 1[-], 2[O], 3[O], 4[-], 5[O], 6[O], 7[O], 8[-], 9[O]
+NST 7 : 1[O], 2[O], 3[O], 4[-], 5[O], 6[O], 7[O], 8[-], 9[O]
+</pre>
+<hr size="0">
+<h4>性能(Xilinx Virtex-II PRO XC2VP70-5FF1517C)</h4>
+
+<pre>
+----------------------------------------------------------------------------------------
+pg_log_unsigned_add_itp(x, y, z, 14,  5, NST, 3);
+NFLO=14
+NMAN= 5
+NCUT= 3
+NST,    MHz , Cpath, Slices,  FFs,  LUTs,  MULT18X18
+1  ,  64.545,  0-9 ,     57,   14,   105,          1
+2  , 103.670,  3-9 ,     69,   54,   107,          1
+3  , 151.207,  0-3 ,     73,   81,   104,          1
+4  , 165.207,  6-9 ,     82,  108,   106,          1
+5  , 201.077,  0-2 ,     94,  129,   110,          1
+6* , 201.077,  0-2 ,     90,  122,   125,          1
+7  , 231.054,  6-7 ,    120,  174,   127,          1
+
+(* not effective)
+----------------------------------------------------------------------------------------
+pg_log_unsigned_add_itp(x, y, z, 17,  8, NST, 6);
+NFLO=17
+NMAN= 8
+NCUT= 6
+NST,    MHz , Cpath, Slices,  FFs,  LUTs,  MULT18X18
+1  ,  58.828,  0-9 ,     86,   17,   155,          1
+2  ,  95.740,  3-9 ,     96,   69,   164,          1
+3  , 138.042,  0-3 ,     92,  104,   157,          1
+4  , 156.691,  6-9 ,    100,  137,   158,          1
+5  , 180.865,  3-6 ,    115,  164,   165,          1
+6  , 195.369,  0-2 ,    116,  157,   183,          1
+7  , 220.994,  6-7 ,    153,  221,   185,          1
+
+----------------------------------------------------------------------------------------
+pg_log_unsigned_add_itp(x, y, z, 20, 11, NST, 9);
+NFLO=20
+NMAN=11
+NCUT= 9
+NST,    MHz , Cpath, Slices,  FFs,  LUTs,  MULT18X18
+1  ,  53.562,  0-9 ,    115,   20,   207,          1
+2  ,  88.082,  3-9 ,    126,   89,   220,          1
+3  , 135.125,  0-3 ,    123,  134,   213,          1
+4  , 148.721,  6-9 ,    125,  173,   214,          1
+5  , 165.071,  3-6 ,    144,  206,   224,          1
+6  , 189.976,  0-2 ,    148,  199,   245,          1
+7  , 218.293,  6-7 ,    191,  275,   247,          1
+</pre>
+
+
+<hr size="0">
+<h4>演算精度 |Erel|max</h4>
+<ul>
+<li>
+    <h3>pg_log_unsigned_add_itp(x, y, z, 14,  5, 1, 3);</h3>
+    <h3>|Erel|max = 2.5e-2</h3>
+    <a href="./img/pg_log_unsigned_add_itp_man5cut3.png">
+    <img src="./img/pg_log_unsigned_add_itp_man5cut3.png" width="300">
+    </a>
+<li>
+    <h3>pg_log_unsigned_add_itp(x, y, z, 17,  8, 1, 6);</h3>
+    <h3>|Erel|max = 3.5e-3</h3>
+    <a href="./img/pg_log_unsigned_add_itp_man8cut6.png">
+    <img src="./img/pg_log_unsigned_add_itp_man8cut6.png" width="300">
+    </a>
+<li>
+    <h3>pg_log_unsigned_add_itp(x, y, z, 20, 11, 1, 8);</h3>
+    <h3>|Erel|max = 7.7e-4</h3>
+    <a href="./img/pg_log_unsigned_add_itp_man11cut9.png">
+    <img src="./img/pg_log_unsigned_add_itp_man11cut9.png" width="300">
+    </a>
+</ul>
+
+<hr size="0">
+<!------------------------------------>
+<h4>参照</h4>
+
+<hr size="0">
+<I>Change Log</I>
+<ul>
+<li> 2004.10.14 : the first edition by T. Hamada
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<html>
+<body>
+<a href="index.html">[↑TOP]</a>
+<br>
+<hr size="0">
+<h3>pg_float_compz : 浮動小数点型 符号付 ゼロ比較</h3>
+<hr size="0">
+
+<!------------------------------------>
+<h4>書式</h4>
+
+pg_float_compz(<i>x</i>, <i>y</i>, <i>flag</i>,   <i>NFLO</i>, <i>NMAN</i>, <i>NST</i>);<br>
+
+<hr size="0">
+
+
+<!------------------------------------>
+<h4>引数</h4>
+
+<br>
+
+  <dl compact="compact">
+  <dt><i>x</i></dt>
+  <dd>  :  被比較数  </dd>
+
+  <dt><i>y</i></dt>
+  <dd>  :  比較数  </dd>
+
+  <dt><i>flag</i></dt>
+  <dd>  :  比較結果:  if(x>0) flag=1; else flag=0;</dd>
+
+  <dt><i>NFLO</i></dt>
+  <dd>  : 浮動小数点ワードビット幅 </dd>
+
+  <dt><i>NMAN</i></dt>
+  <dd>  :  仮数部(精度)ビット幅</dd>
+
+  <dt><i>NST</i></dt>
+  <dd>  :  パイプラインステージ数</dd>
+  </dl>
+
+<hr size="0">
+
+<!------------------------------------>
+<h4>記述例</h4>
+<pre>
+pg_float_compz(x, y, flag, 18,  8, 1);
+pg_float_compz(x, y, flag, 26, 16, 1);
+pg_float_compz(x, y, flag, 33, 23, 1);
+</pre>
+
+<hr size="0">
+
+<!------------------------------------>
+<h4>概要</h4>
+
+  if(x>0) flag=1 else flag=0;<br>
+
+<hr size="0">
+
+<!------------------------------------>
+<h4>参照</h4>
+
+<hr size="0">
+<I>Change Log</I>
+<ul>
+<li> 2004.10.14 : the first edition by T. Hamada
+</ul>
+
+</body>
+</html>

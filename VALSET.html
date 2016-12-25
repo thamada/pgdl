@@ -1,0 +1,71 @@
+<html>
+<body>
+<a href="index.html">[↑TOP]</a>
+<br>
+<hr size="0">
+<h3>/VALSET</h3>
+<hr size="0">
+
+<!------------------------------------>
+<h4>書式</h4>
+
+/VALSET <i>vname</i>, <i>hex_value</i>,  <i>nbit_lsb</i>, <i>nbit_msb</i>;
+<br>
+
+<hr size="0">
+
+
+<!------------------------------------>
+<h4>引数</h4>
+
+  <dl compact="compact">
+  <dt><i>vname</i></dt>
+  <dd>  :  データフロー記述部変数名  </dd>
+
+  <dt><i>hex_value</i></dt>
+  <dd>  :  定数(C言語16進リテラル) </dd>
+
+  <dt><i>nbit_lsb</i></dt>
+  <dd>  :  VHDL signalでの(nbit_msb downto <b>nbit_lsb</b>)のnbit_lsb </dd>
+
+  <dt><i>nbit_msb</i></dt>
+  <dd>  :  VHDL signalでの(<b>nbit_msb</b> downto nbit_lsb)のnbit_msb </dd>
+  </dl>
+
+
+
+<hr size="0">
+
+<!------------------------------------>
+<h4>記述例</h4>
+/VALSET mmax ,0x9700,0,16;
+
+<hr size="0">
+
+<!------------------------------------>
+<h4>概要</h4>
+/VALSETはデータフロー記述中でビット列定数を指定するためのものである.<br>
+/VASETはHDLに精通したプログラマ用にあるもので, <br>
+通常は/CONST_FLOATもしくは /CONST_LOGを使用すれば事足りる.<br>
+<br>
+
+記述例のmmaxは, HDL中では,
+<pre>
+  constant mmax : std_logic_vector(16 downto 0) := "01001011100000000"; -- 0x9700
+</pre>
+という定数信号に変換される.
+
+
+<hr size="0">
+
+<!------------------------------------>
+<h4>参照</h4>
+
+<hr size="0">
+<I>Change Log</I>
+<ul>
+<li> 2004.08.16 : the first edition
+</ul>
+
+</body>
+</html>

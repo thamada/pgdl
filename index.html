@@ -1,0 +1,566 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" media="all" href="./style.css" />
+</head>
+<body>
+
+[<a href="../">←PGRのHOME</a>]
+
+
+<h3>任意ビット長パラメタ化演算器モジュール 一覧</h3>
+
+<hr size="1">
+
+<table border="1" cellspacing="1" width=700>
+
+<!------------------------------------------------------------------------------------>
+<tr>
+<td>浮動小数点演算</td>
+<td><hr size="0"></td>
+<td><hr size="0"></td>
+<td><hr size="0"></td>
+<td><hr size="0"></td>
+</tr>
+
+<tr>
+<td><a href="./pg_float_add.html">pg_float_add</a></td>
+<td>加算(浮動小数点型)</td>
+<td>(x,y,z,NFLO,NMAN,NST,RM)</td>
+<td>z = x + y;</td>
+<td>E済,V済</td>
+</tr>
+
+<tr>
+<td><a href="./pg_float_unsigned_add.html">pg_float_unsigned_add</a></td>
+<td>加算(符号無し, 浮動小数点型)</td>
+<td>(x,y,z,NFLO,NMAN,NST,RM)</td>
+<td>z = x + y;</td>
+<td>E済,V済</td>
+</tr>
+
+<tr>
+<td><a href="./pg_float_sub.html">pg_float_sub</a></td>
+<td>  減算(浮動小数点型)</td>
+<td>(x,y,z,NFLO,NMAN,NST,RM)</td>
+<td>z = x - y;</td>
+<td>E済,V済</td>
+</tr>
+
+<tr>
+<td><a href="./pg_float_unsigned_sub.html">pg_float_unsigned_sub</a></td>
+<td>減算(符号無し, 浮動小数点型)</td>
+<td>(x,y,z,NFLO,NMAN,NST,RM)</td>
+<td>z = x - y;</td>
+<td>E済,V済</td>
+</tr>
+
+<tr>
+<td><a href="./pg_float_mult.html">pg_float_mult</a></td>
+<td>乗算(浮動小数点型)</td>
+<td>(x,y,z,NFLO,NMAN,NST,RM)</td>
+<td>z = x * y;</td>
+<td>E済,V済</td>
+</tr>
+
+<tr>
+<td><a href="./pg_float_div.html">pg_float_div</a></td>
+<td>除算(浮動小数点型)</td>
+<td>(x,y,z,NFLO,NMAN,NST,RM)</td>
+<td>z = x / y;</td>
+<td>E済,V済</td>
+</tr>
+
+<tr>
+<td><a href="./pg_float_square.html">pg_float_square</a></td>
+<td>二乗(浮動小数点型)</td>
+<td>(x,z,NFLO,NMAN,NST,RM)</td>
+<td>z = x*x;</td>
+<td>E済,V済</td>
+</tr>
+
+<tr>
+<td><a href="./pg_float_recipro.html">pg_float_recipro</a></td>
+<td>逆数 (浮動小数点型)</td>
+<td>(x,z,NFLO,NMAN,NST)</td>
+<td>z = 1/x;</td>
+<td>E済,V済</td>
+</tr>
+
+<tr>
+<td><a href="./pg_float_sqrt.html">pg_float_sqrt</a></td>
+<td>平方根(浮動小数点型)</td>
+<td>(x,z,NFLO,NMAN,NST)</td>
+<td>z = sqrt(x);</td>
+<td>E済,V済</td>
+</tr>
+
+<tr>
+<td><a href="./pg_float_negate.html">pg_float_negate</a></td>
+<td>符号反転: (浮動小数点型)</td>
+<td>(x,z,NFLO)</td>
+<td>z = -x;</td>
+<td>E済,V済</td>
+</tr>
+
+<tr>
+<td><a href="./pg_float_compare.html">pg_float_compare</a></td>
+<td>大小比較(浮動小数点型) </td>
+<td>(x,y,flag,NFLO,NMAN,NST)</td>
+<td>flag = (x>y) ? 1 : 0;</td>
+<td>E済,V済</td>
+</tr>
+
+<tr>
+<td><a href="./pg_float_compare_abs.html">pg_float_compare_abs</a></td>
+<td> 絶対値大小比較(浮動小数点型) </td>
+<td>(x,y,flag,NFLO,NMAN,NST)</td>
+<td>flag = (|x|>|y|) ? 1 : 0;</td>
+<td>E済,V済</td>
+</tr>
+
+<tr>
+<td><a href="./pg_float_compz.html">pg_float_compz</a></td>
+<td>ゼロ比較 (浮動小数点型)</td>
+<td>(x,flag,NFLO,NMAN,NST)</td>
+<td>flag = (x>0) ? 1 : 0;</td>
+<td>E済,V済</td>
+</tr>
+
+<tr>
+<td><a href="./pg_float_compz_abs.html">pg_float_compz_abs</a></td>
+<td>絶対値ゼロ比較 (浮動小数点型)</td>
+<td>(x,flag,NFLO,NMAN,NST)</td>
+<td>flag = (|x|>0) ? 1 : 0;</td>
+<td>E済,V済</td>
+</tr>
+
+<tr>
+<td><a href="./pg_float_poly.html">pg_float_poly</a></td>
+<td>Nth-order polynominal to calculate f(x) </td>
+<td>(x,z,NFLO,NMAN,NST,NORD,NCUT,FSRC)</td>
+<td> z = Chebyshev(x) </td>
+<td>予約</td>
+</tr>
+
+<tr>
+<td><a href="./pg_float_sin.html">pg_float_sin</a></td>
+<td>サイン関数(浮動小数点型)</td>
+<td>(x,z,NFLO,NMAN,NST)</td>
+<td>z = sin(2pi x);</td>
+<td>E済,V中</td>
+</tr>
+
+<tr>
+<td><a href="./pg_float_cos.html">pg_float_cos</a></td>
+<td>コサイン関数(浮動小数点型)</td>
+<td>(x,z,NFLO,NMAN,NST)</td>
+<td>z = cos(2pi x);</td>
+<td>E済,V中</td>
+</tr>
+
+<tr>
+<td><a href="./pg_float_fixwtable.html">pg_float_fixwtable</a></td>
+<td>SPHカーネル関数 (浮動小数点型)</td>
+<td>(x,z,NFLO,NMAN,NST)</td>
+<td>z = w(x);</td>
+<td>E済,V済</td>
+</tr>
+
+
+<tr>
+<td><a href="./pg_float_expadd.html">pg_float_expadd</a></td>
+<td>定数倍(浮動小数点型)</td>
+<td>(x,z,N,NFLO,NMAN,NST)</td>
+<td>z = x * pow(2.0,N);</td>
+<td>E済,V済</td>
+</tr>
+
+
+
+<!-------------------------------------------------------------------------------------------------------------->
+<tr>
+<td>対数表現演算</td>
+<td><hr size="0"></td>
+<td><hr size="0"></td>
+<td><hr size="0"></td>
+<td><hr size="0"></td>
+</tr>
+
+<tr>
+<td><a href="./pg_log_add.html">pg_log_add</a></td>
+<td>加算(対数型) </td>
+<td>(x,y,z,NLOG,NMAN,NST)</td>
+<td>z = x + y;</td>
+<td>E済,V済</td>
+</tr>
+
+<tr>
+<td><a href="./pg_log_shift.html">pg_log_shift</a></td>
+<td>累乗(sqrt,square含む, 対数型) </td>
+<td>(S,x,z,NLOG,NMAN)</td>
+<td>z = x**(1 << S);</td>
+<td>E済,V済</td>
+</tr>
+
+<tr>
+<td><a href="./pg_log_unsigned_add.html">pg_log_unsigned_add</a></td>
+<td>加算(符号無し, 対数型) </td>
+<td>(x,y,z,NLOG,NMAN,NST)</td>
+<td>z = x + y;</td>
+<td>E済,V済</td>
+</tr>
+
+<tr>
+<td><a href="./pg_log_unsigned_add_itp.html">pg_log_unsigned_add_itp</a></td>
+<td>加算(符号無し, 対数型,interpo.) </td>
+<td>(x,y,z,NLOG,NMAN,NST,NC)</td>
+<td>z = x + y;</td>
+<td>E済,V済</td>
+</tr>
+
+<tr>
+<td><a href="./pg_log_muldiv.html">pg_log_muldiv</a></td>
+<td>乗算/除算(対数型) </td>
+<td>(MUDI,x,y,z,NLOG,NST)</td>
+<td>z = x*y;(=x/y;)</td>
+<td>E済,V済</td>
+</tr>
+
+<tr>
+<td><a href="./pg_log_expadd.html">pg_log_expadd</a></td>
+<td>定数倍(対数型)</td>
+<td>(x,z,N,NFLO,NMAN,NST)</td>
+<td>z = x * pow(2.0,N);</td>
+<td>E済,V済</td>
+</tr>
+
+
+<!-------------------------------------------------------------------------------------------------------------->
+<tr>
+<td>固定小数点演算</td>
+<td><hr size="0"></td>
+<td><hr size="0"></td>
+<td><hr size="0"></td>
+<td><hr size="0"></td>
+</tr>
+
+<tr>
+<td><a href="./pg_fix_addsub.html">pg_fix_addsub</a></td>
+<td>加算/減算(固定小数点型) </td>
+<td>(ADSU,x,y,z,NFIX,NST)</td>
+<td>z = x+y;(=x-y;)</td>
+<td>E済,V済</td>
+</tr>
+
+
+<tr>
+<td><a href="./pg_fix_unsigned_mult.html">pg_fix_unsigned_mult</a></td>
+<td>乗算(符号無し, 固定小数点型) </td>
+<td>(x,y,z,NFIX,NST)</td>
+<td>z = x * y;</td>
+<td>予約</td>
+</tr>
+
+<tr>
+<td><a href="./pg_fix_ult.html">pg_fix_mult</a></td>
+<td>乗算(固定小数点型) </td>
+<td>(x,y,z,NFIX,NST)</td>
+<td>z = x * y;</td>
+<td>予約</td>
+</tr>
+
+<tr>
+<td><a href="./pg_fix_sqrt.html">pg_fix_sqrt</a></td>
+<td>平方根(固定小数点型) </td>
+<td>(x,z,NFIX,NST,NORD)</td>
+<td>z = sqrt(x);</td>
+<td>予約</td>
+</tr>
+
+<tr>
+<td><a href="./pg_fix_recipro.html">pg_fix_recipro</a></td>
+<td>逆数(固定小数点型) </td>
+<td>(x,z,NFIX,NST,NORD)</td>
+<td>z = 1/x;</td>
+<td>予約</td>
+</tr>
+
+<tr>
+<td><a href="./pg_fix_sin.html">pg_fix_sin</a></td>
+<td>サイン関数(固定小数点型) </td>
+<td>(x,z,NFIX,NST,NORD)</td>
+<td>z = sin(2pi x);</td>
+<td>予約</td>
+</tr>
+
+<tr>
+<td><a href="./pg_fix_cos.html">pg_fix_cos</a></td>
+<td>コサイン関数(固定小数点型) </td>
+<td>(x,z,NFIX,NST,NORD)</td>
+<td>z = cos(2pi x);</td>
+<td>予約</td>
+</tr>
+
+<tr>
+<td><a href="./pg_fix_arcsin.html">pg_fix_sin</a></td>
+<td>アークサイン関数(固定小数点型) </td>
+<td>(x,z,NFIX,NST,NORD)</td>
+<td>z = arcsin(2pi x);</td>
+<td>予約</td>
+</tr>
+
+<tr>
+<td><a href="./pg_fix_arccos.html">pg_fix_arccos</a></td>
+<td>アークコサイン関数(固定小数点型) </td>
+<td>(x,z,NFIX,NST,NORD)</td>
+<td>z = cosh(2pi x);</td>
+<td>予約</td>
+</tr>
+
+<tr>
+<td><a href="./pg_fix_sinh.html">pg_fix_sinh</a></td>
+<td>ハイパボリックサイン関数(固定小数点型) </td>
+<td>(x,z,NFIX,NST,NORD)</td>
+<td>z = sinh(2pi x);</td>
+<td>予約</td>
+</tr>
+
+<tr>
+<td><a href="./pg_fix_cosh.html">pg_fix_cosh</a></td>
+<td>ハイパボリックコサイン関数(固定小数点型) </td>
+<td>(x,z,NFIX,NST,NORD)</td>
+<td>z = cosh(2pi x);</td>
+<td>予約</td>
+</tr>
+
+<!-------------------------------------------------------------------------------------------------------------->
+<tr>
+<td>型変換</td>
+<td><hr size="0"></td>
+<td><hr size="0"></td>
+<td><hr size="0"></td>
+<td><hr size="0"></td>
+</tr>
+
+<tr>
+<td><a href="./pg_conv_fixtofloat.html">pg_conv_fixtofloat</a></td>
+<td>型変換(固定小数点型→浮動小数点型)</td>
+<td>(x,z,NFIX,NFLO,NMAN,NST,RM)</td>
+<td>z <- x;</td>
+<td>予約</td>
+</tr>
+
+<tr>
+<td><a href="./pg_conv_floattofix.html">pg_conv_floattofix</a></td>
+<td>型変換(浮動小数点型→固定小数点型)</td>
+<td>(x,z,NFLO,NMAN,NFIX,NST,RM)</td>
+<td>z <- x;</td>
+<td>E済,V済</td>
+</tr>
+
+<tr>
+<td><a href="./pg_conv_ftol.html">pg_conv_ftol</a></td>
+<td>型変換(固定小数点型→対数型)</td>
+<td>(x,z,NFIX,NFLOG,NMAN,NST)</td>
+<td>z <- x;</td>
+<td>E済,V済</td>
+</tr>
+
+<tr>
+<td><a href="./pg_conv_ftol_itp.html">pg_conv_ftol_itp</a></td>
+<td>型変換(固定小数点型→対数型,interpo.) </td>
+<td>(x,z,NFIX,NFLOG,NMAN,NST,NC)</td>
+<td>z <- x;</td>
+<td>E済,V済</td>
+</tr>
+
+<tr>
+<td><a href="./pg_conv_ltof.html">pg_conv_ltof</a></td>
+<td>型変換(対数型→固定小数点型)</td>
+<td>(x,z,NLOG,NMAN,NFIX,NST)</td>
+<td>z <- x;</td>
+<td>E済,V済</td>
+</tr>
+
+<tr>
+<td><a href="./pg_conv_ltof_itp.html">pg_conv_ltof_itp</a></td>
+<td>型変換(対数型→固定小数点型,interpo.)</td>
+<td>(x,z,NLOG,NMAN,NFIX,NST,NC)</td>
+<td>z <- x;</td>
+<td>E済,V済</td>
+</tr>
+
+<!-------------------------------------------------------------------------------------------------------------->
+<tr>
+<td>ビット演算</td>
+<td><hr size="0"></td>
+<td><hr size="0"></td>
+<td><hr size="0"></td>
+<td><hr size="0"></td>
+</tr>
+
+<tr>
+<td><a href="./pg_bits_and.html">pg_bits_and</a></td>
+<td>論理AND</td>
+<td>(x,y,z,NBIT)</td>
+<td>z = x & y;</td>
+<td>E済,V済</td>
+</tr>
+
+<tr>
+<td><a href="./pg_bits_or.html">pg_bits_or</a></td>
+<td>論理OR</td>
+<td>(x,y,z,NBIT)</td>
+<td>z = x | y;</td>
+<td>E済,V済</td>
+</tr>
+
+<tr>
+<td><a href="./pg_bits_xor.html">pg_bits_xor</a></td>
+<td>論理XOR</td>
+<td>(x,y,z,NBIT)</td>
+<td>z = x ^ y;</td>
+<td>E済,V済</td>
+</tr>
+
+<tr>
+<td><a href="./pg_bits_inv.html">pg_bits_inv</a></td>
+<td>論理NOT</td>
+<td>(x,z,NBIT)</td>
+<td>z = ~x;</td>
+<td>E済,V済</td>
+</tr>
+
+<tr>
+<td><a href="./pg_bits_join.html">pg_bits_join</a></td>
+<td>ビット列結合</td>
+<td>(x, y, z, NBITX, NBITY)</td>
+<td>z = (x << NBITY) | y;</td>
+<td>E済,V済</td>
+</tr>
+
+<tr>
+<td><a href="./pg_bits_part.html">pg_bits_part</a></td>
+<td>ビット列分割</td>
+<td>(x, z, NBITX, NH, NL)</td>
+<td>z = x(NH-1 downto NL);</td>
+<td>E済,V済</td>
+</tr>
+
+<tr>
+<td><a href="./pg_bits_rotate.html">pg_bits_rotate</a></td>
+<td>ビット列循環</td>
+<td>(NROT,x,z,NBIT)</td>
+<td></td>
+<td>E済,V済</td>
+</tr>
+
+<tr>
+<td><a href="./pg_bits_delay.html">pg_bits_delay</a></td>
+<td>ビット列強制遅延</td>
+<td>(x,z,NBIT,NST)</td>
+<td>z = x;</td>
+<td>E済,V済</td>
+</tr>
+
+
+<tr>
+<td><a href="./pg_bits_mux.html">pg_bits_mux</a></td>
+<td>マルチプレクサ</td>
+<td>(flag, x, y, z, NBIT)</td>
+<td> z = (flag==0) ? x : y;</td>
+<td>E済,V済</td>
+</tr>
+
+
+<!-------------------------------------------------------------------------------------------------------------->
+<tr>
+<td>演算結果レジスタ専用</td>
+<td><hr size="0"></td>
+<td><hr size="0"></td>
+<td><hr size="0"></td>
+<td><hr size="0"></td>
+</tr>
+
+
+<tr>
+<td><a href="./pg_bits_regifile.html">pg_bits_regifile</a></td>
+<td>(非積算な)演算結果格納レジスタファイル</td>
+<td>(x, z, NBIT)</td>
+<td> z = x;</td>
+<td>E済,V済</td>
+</tr>
+
+<tr>
+<td><a href="./pg_fix_accum.html">pg_fix_accum</a></td>
+<td>積算(固定小数点型) </td>
+<td>(x,z,NBITX,NBITZ,NST)</td>
+<td>z += x;</td>
+<td>E済,V済</td>
+</tr>
+
+<tr>
+<td><a href="./pg_float_fixaccum.html">pg_float_fixaccum</a></td>
+<td>型変換付積算 (浮動小数点・固定小数点型)</td>
+<td>(x,z,NFLO,NMAN,NFIX,NFIXS,NST,RM)</td>
+<td>z += x;</td>
+<td>E済,V済</td>
+</tr>
+
+<tr>
+<td><a href="./pg_float_accum.html">pg_float_accum</a></td>
+<td>積算(浮動小数点型)</td>
+<td>(x,z,NFLO,NMAN,NST,RM)</td>
+<td>z += x;</td>
+<td>E済,V済</td>
+</tr>
+
+<tr>
+<td><a href="./pg_float_unsigned_accum.html">pg_float_unsigned_accum</a></td>
+<td>積算(符号無し, 浮動小数点型)</td>
+<td>(x,z,NFLO,NMAN,NST,RM)</td>
+<td>z += x;</td>
+<td>E済,V済</td>
+</tr>
+
+
+<!--<tr><td><a href="./pg_pdelay.html">pg_pdelay</a></td><td>  </td><td>(2004.X.XX)</td></tr>-->
+</table>
+(※)<br>
+NFIX(固定小数型ビット長),
+NLOG(対数型ビット長),
+NFLO(浮動小数型ビット長),
+NMAN(仮数部ビット長),
+NST(パイプラインステージ数),
+RM(丸めモード番号)
+NC(補間用区間ビット長),
+MUDI(乗除指定キー),
+ADSU(加減指定キー),
+S(シフト数),
+
+NBIT(ビット長), 
+NROT(循環ビット数),
+NH(MSBビットindex),
+NL(LSBビットindex),
+NORD(多項式次数),
+FSRC(関数式記述Cソース名)
+
+
+<br><br>
+<b>丸めモード指定キーワード</b>
+<table border="1" cellspacing="1">
+<tr><td>0. <a href="./ROUNDINGOPE.html#TRUNC">TRUNC</a></td><td>Truncation</td><td>(2004.8.20)</td></tr>
+<tr><td>1. <a href="./ROUNDINGOPE.html#TRUNCZ">TRUNCZ</a></td><td>Truncation to Zero</td><td>(2004.8.20)</td></tr>
+<tr><td>2. <a href="./ROUNDINGOPE.html#RPINF">RPINF</a></td><td>Rounding to Plus Infinity</td><td>(2004.8.20)</td></tr>
+<tr><td>3. <a href="./ROUNDINGOPE.html#RMINF">RMINF</a></td><td>Rounding to Minus Infinity</td><td>(2004.8.20)</td></tr>
+<tr><td>4. <a href="./ROUNDINGOPE.html#RINF">RINF</a></td><td>Rounding to Infinity</td><td>(2004.8.20)</td></tr>
+<tr><td>5. <a href="./ROUNDINGOPE.html#RZERO">RZERO</a></td><td>Rounding to Zero</td><td>(2004.8.20)</td></tr>
+<tr><td>6. <a href="./ROUNDINGOPE.html#REVEN">REVEN</a></td><td>Rounding to the Nearest Even</td><td>(2004.8.20)</td></tr>
+<tr><td>7. <a href="./ROUNDINGOPE.html#RODD">RODD</a></td><td>Rounding to the Nearest Odd</td><td>(2004.8.20)</td></tr>
+<tr><td>8. <a href="./ROUNDINGOPE.html#FORCE1">FORCE1</a></td><td>Rounding force to one</td><td>(2004.8.20)</td></tr>
+</table>
+
+<br>
+
+</body>
+</html>

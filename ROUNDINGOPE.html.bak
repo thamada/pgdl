@@ -1,0 +1,95 @@
+<html>
+<body>
+<a href="index.html">[↑TOP]</a>
+<br>
+<hr size="0">
+<h3>丸めモード指定用キーワード</h3>
+<hr size="0">
+
+<!------------------------------------>
+<h4>概要</h4>
+<!--
+pgr入門者は丸め操作についてそんなにシビアにならなくても良いです.<br>
+精度が悪ければとりあえず1ビット増やして下さい.<br>
+以下はpgpg中級者以上の説明です.<br>
+
+まず, 丸め操作の概略です.
+<pre>
+    if(ROUND_MODE == 0)      msb_inc = 0;                           /* Truncation */
+    else if(ROUND_MODE == 1) msb_inc = sign*(1-(1-Sbit)*(1-Gbit));  /* Truncation to Zero */
+    else if(ROUND_MODE == 2) msb_inc = Sbit;                        /* Rounding to Plus Infinity */
+    else if(ROUND_MODE == 3) msb_inc = Sbit*Gbit;                   /* Rounding to Minus Infinity */
+    else if(ROUND_MODE == 4) msb_inc = Sbit*(1-sign*(1-Gbit));      /* Rounding to Infinity */
+    else if(ROUND_MODE == 5) msb_inc = Sbit*(1-(1-sign)*(1-Gbit));  /* Rounding to Zero */
+    else if(ROUND_MODE == 6) msb_inc = Sbit*(1-(1-Ulp)*(1-Gbit));   /* Rounding to Even */
+    else if(ROUND_MODE == 7) msb_inc = Sbit*(1-Ulp*(1-Gbit));       /* Rounding to Odd */
+    else                     msb_inc = Sbit | Gbit;                 /* Force to one rounding */
+</pre>
+
+msb_incは丸め操作の加算ビット, <br>
+sign, Sbit, Gbit, Ulp はそれぞれ
+<pre>
+    sign                                                 /* 丸める数の符号                      */
+    Ulp  = 0x1ULL & (x >> nbit_cut);                     /* 丸めて残るビット列のLSB             */
+    Sbit = 0x1ULL & (x >> (nbit_cut-1));                 /* 丸めで捨てるビット列のMSB           */
+    Gbit = ( (((0x1ULL<<(nbit_cut))-1) & z)==0) ? 0 : 1; /* 丸めで捨てるビット列のMSB以外の全OR */
+</pre>
+になります.
+-->
+
+<!------------------------------------><hr size="0"><a name = "TRUNC">
+<h4>Truncation</h4>
+
+<img src="img/Truncation.png">
+
+<!------------------------------------><hr size="0"><a name = "TRUNCZ">
+<h4>Truncation to Zero</h4>
+
+<img src="img/TruncationToZero.png">
+
+<!------------------------------------><hr size="0"><a name = "RPINF">
+<h4>Rounding to Plus Infinity</h4>
+
+<img src="img/RoundingToPlusInfinity.png">
+
+<!------------------------------------><hr size="0"><a name = "RMINF">
+<h4>Rounding to Minus Infinity</h4>
+
+<img src="img/RoundingToMinusInfinity.png">
+
+<!------------------------------------><hr size="0"><a name = "RINF">
+<h4>Rounding to Infinity</h4>
+
+<img src="img/RoundingToInfinity.png">
+
+<!------------------------------------><hr size="0"><a name = "RZERO">
+<h4>Rounding to Zero</h4>
+
+<img src="img/RoundingToZero.png">
+
+<!------------------------------------><hr size="0"><a name = "REVEN">
+<h4>Rounding to Even</h4>
+
+<img src="img/RoundingToEven.png">
+
+<!------------------------------------><hr size="0"><a name = "RODD">
+<h4>Rounding to Odd</h4>
+
+<img src="img/RoundingToOdd.png">
+
+<!------------------------------------><hr size="0"><a name = "FORCE1">
+<h4>Force to one rounding</h4>
+
+
+<hr size="0">
+<!------------------------------------>
+<h4>参照</h4>
+
+<hr size="0">
+<I>Change Log</I>
+<ul>
+<li> 2004.08.17 : the first edition by T. Hamada
+</ul>
+
+</body>
+</html>
