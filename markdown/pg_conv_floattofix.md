@@ -1,4 +1,4 @@
-!Time-stamp: <2016-12-28 23:23:54 hamada>
+Time-stamp: <2016-12-28 23:25:18 hamada>
 
 # pg_conv_floattofix : 浮動小数点⇒対数 型変換
 

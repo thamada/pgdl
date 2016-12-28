@@ -1,4 +1,4 @@
-#!Time-stamp: <2016-12-28 23:21:48 hamada>
+Time-stamp: <2016-12-28 23:25:12 hamada>
 
 # pg_bits_and : •”•√•»ŒÛ∑ø AND
 
