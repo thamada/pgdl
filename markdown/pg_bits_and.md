@@ -1,11 +1,11 @@
-#!Time-stamp: <2016-12-28 22:52:03 hamada>
+#!Time-stamp: <2016-12-28 22:53:27 hamada>
 
 # pg_bits_and : ビット列型 AND
 
 ------------------------------
 ## 書式
 
-pg_bits_and(x, y, z, _NBIT_);
+pg_bits_and(x, y, z, __NBIT__);
 
 ------------------------------
 ## 引数
