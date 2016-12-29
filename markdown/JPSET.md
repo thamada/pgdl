@@ -1,4 +1,4 @@
-Time-stamp: <2016-12-30 05:12:27 hamada>
+Time-stamp: <2016-12-30 05:24:54 hamada>
 
 # /JPSET
 
@@ -96,17 +96,16 @@ log変換では上のようにif文による場合分けが生じます. これは(PGPGシステム
 詳細をC言語であらわすと次のようになります.
 
 ```
-      /JPSET hj, h[], float, 26,   16;
+/JPSET hj, h[], float, 26,   16;
 
-      if (h[j] == 0.0)
-          hj = 0;
-      else
-        {
-          unsigned long long int b = *((unsigned long long int *) (&h[j]));
-          hj = ((0x8000000000000000ULL & b) >> 38)
-            | (0x1000000ULL)
-            | 0xffffffULL &  ( (0x3fffffffffffffffULL & (b-0x3ff0000000000000ULL)) >> 36 );
-        }
+if (0.0 == h[j]) {
+    hj = 0;
+} else {
+    unsigned long long int b = *((unsigned long long int *) (&h[j]));
+    hj = ((0x8000000000000000ULL & b) >> 38)
+        | (0x1000000ULL)
+        | 0xffffffULL &  ( (0x3fffffffffffffffULL & (b-0x3ff0000000000000ULL)) >> 36 );
+}
 ```
 
 上記のfloat変換は*rmode*を省略しているため丸め操作はデフォルトの
