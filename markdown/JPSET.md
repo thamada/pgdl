@@ -1,4 +1,4 @@
-Time-stamp: <2016-12-30 05:28:52 hamada>
+Time-stamp: <2016-12-30 06:08:10 hamada>
 
 # /JPSET
 
@@ -49,11 +49,11 @@ Time-stamp: <2016-12-30 05:28:52 hamada>
 のようになります.
 
 ```
-      /JPSET xj[3], x[][], fix, 32, (pow(2.0,32.0)/64.0);
+/JPSET xj[3], x[][], fix, 32, (pow(2.0,32.0)/64.0);
 
-      xj[0] = ((int) (x[j][0] * (pow (2.0, 32.0) / 64.0) + 0.5)) & 0xFFFFFFFF;
-      xj[1] = ((int) (x[j][1] * (pow (2.0, 32.0) / 64.0) + 0.5)) & 0xFFFFFFFF;
-      xj[2] = ((int) (x[j][2] * (pow (2.0, 32.0) / 64.0) + 0.5)) & 0xFFFFFFFF;
+xj[0] = ((int) (x[j][0] * (pow (2.0, 32.0) / 64.0) + 0.5)) & 0xFFFFFFFF;
+xj[1] = ((int) (x[j][1] * (pow (2.0, 32.0) / 64.0) + 0.5)) & 0xFFFFFFFF;
+xj[2] = ((int) (x[j][2] * (pow (2.0, 32.0) / 64.0) + 0.5)) & 0xFFFFFFFF;
 ```
 
 
