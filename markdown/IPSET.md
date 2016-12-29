@@ -1,4 +1,4 @@
-Time-stamp: <2016-12-30 05:08:14 hamada>
+Time-stamp: <2016-12-30 05:41:50 hamada>
 
 # /IPSET
 
@@ -78,12 +78,13 @@ yi[2] = ((unsigned int) ((x[i][2] + (32.0)) * (pow (2.0, 32.0) / 64.0) + 0.5)) &
 ```
 /IPSET hi, h[], log, 17, 8, (pow(2.0,60.0)/(1.0/1024.0));
 
-if (h[i] == 0.0)
+if (0.0 == h[i]) {
     hi = 0;
-else if(h[i] > 0.0)
+} else if(0.0 < h[i]) {
     hi = (((int)(pow(2.0, 8.0) * log(h[i] * (pow(2.0, 60.0) / (1.0 / 1024.0))) / log(2.0))) & 0x7FFF) | 0x8000;
-else
+} else {
     hi = (((int)(pow(2.0, 8.0) * log(-h[i] * (pow(2.0, 60.0) / (1.0 / 1024.0))) / log(2.0))) & 0x7FFF) | 0x18000;
+}
 ```
 
 log変換では上のようにif文による場合分けが生じます. これは(PGPGシステム
@@ -97,12 +98,11 @@ log変換では上のようにif文による場合分けが生じます. これは(PGPGシステム
 詳細をC言語であらわすと次のようになります.
 
 ```
-/IPSET hi, h[], float, 26,   16;
-      
+/IPSET hi, h[], float, 26, 16;
 
-if (h[i] == 0.0)
+if (0.0 == h[i]) {
     hi = 0;
-else {
+} else {
     unsigned long long int b = *((unsigned long long int *) (&h[i]));
     hi = ((0x8000000000000000ULL & b) >> 38)
         | (0x1000000ULL)
