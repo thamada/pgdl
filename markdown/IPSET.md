@@ -1,4 +1,4 @@
-Time-stamp: <2016-12-29 02:24:52 hamada>
+Time-stamp: <2016-12-30 05:08:14 hamada>
 
 # /IPSET
 
@@ -19,11 +19,11 @@ Time-stamp: <2016-12-29 02:24:52 hamada>
 
 - *vname*: データフロー記述部変数名
 - *iname*: *vname*に対応するインタフェース引数
-- <b>fix, ufix, log, float: *vname*の型
+- <b>fix</b>, <b>ufix</b>, <b>log</b>, <b>float</b>: *vname*の型
 - *len*: *vname*ビット長
-- *mlen*: log,float型の仮数部ビット長
-- *scale*: fix,ufix,log型に変換する時のスケーリング係数
-- *offset*: ufix型に変換する時のオフセット値
+- *mlen*: <b>log</b>,<b>float</b>型の仮数部ビット長
+- *scale*: <b>fix</b>,<b>ufix</b>,<b>log</b>型に変換する時のスケーリング係数
+- *offset*: <b>ufix</b>型に変換する時のオフセット値
 - *rmode*: 丸めモード(省略可) FORCE1(force to one), TOEVEN(to the nearest even), TRUNC(truncation)が指定可能. 省略時はTOEVEN.
 
 ------------------------------
