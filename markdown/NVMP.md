@@ -1,13 +1,11 @@
-Time-stamp: <2017-01-01 16:17:29 hamada>
+Time-stamp: <2017-01-01 16:18:09 hamada>
 
 # /NVMP
 
 ------------------------------
+## 書式
 
-<!------------------------------------>
-<h4>書式</h4>
-
-/NVMP <i>num</i>;
+/NVMP *num*;
 <br>
 
 <hr size="0">
@@ -16,7 +14,7 @@ Time-stamp: <2017-01-01 16:17:29 hamada>
 <!------------------------------------>
 <h4>引数</h4>
   <dl compact="compact">
-  <dt><i>num</i></dt>
+  <dt>*num*</dt>
   <dd>  : バーチャルマルチプルパイプライン数(パイプラインの多重度)  </dd>
   </dl>
 
@@ -43,7 +41,7 @@ Time-stamp: <2017-01-01 16:17:29 hamada>
 <h4>参照</h4>
 
 <hr size="0">
-<I>Change Log</I>
+## Change Log
 <ul>
 <li> 2004.08.16 : the first edition
 </ul>
