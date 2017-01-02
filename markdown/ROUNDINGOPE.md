@@ -1,4 +1,4 @@
-Time-stamp: <2017-01-02 20:18:41 hamada>
+Time-stamp: <2017-01-02 20:19:31 hamada>
 
 # 丸めモード指定用キーワード
 
@@ -16,37 +16,37 @@ Time-stamp: <2017-01-02 20:18:41 hamada>
 ------------------------------
 ## Truncation to Zero
 
-<img src="img/TruncationToZero.png">
+<img src="../html/img/TruncationToZero.png">
 
 ------------------------------
 ## Rounding to Plus Infinity
 
-<img src="img/RoundingToPlusInfinity.png">
+<img src="../html/img/RoundingToPlusInfinity.png">
 
 ------------------------------
 ## Rounding to Minus Infinity
 
-<img src="img/RoundingToMinusInfinity.png">
+<img src="../html/img/RoundingToMinusInfinity.png">
 
 ------------------------------
 ## Rounding to Infinity</h4>
 
-<img src="img/RoundingToInfinity.png">
+<img src="../html/img/RoundingToInfinity.png">
 
 ------------------------------
 ## Rounding to Zero</h4>
 
-<img src="img/RoundingToZero.png">
+<img src="../html/img/RoundingToZero.png">
 
 ------------------------------
 ## Rounding to the Nearest Even</h4>
 
-<img src="img/RoundingToEven.png">
+<img src="../html/img/RoundingToEven.png">
 
 ------------------------------
 ## Rounding to the Nearest Odd</h4>
 
-<img src="img/RoundingToOdd.png">
+<img src="../html/img/RoundingToOdd.png">
 
 ------------------------------
 ## Force to one rounding</h4>
