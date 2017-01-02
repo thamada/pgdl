@@ -1,4 +1,4 @@
-Time-stamp: <2017-01-02 20:11:29 hamada>
+Time-stamp: <2017-01-02 20:13:52 hamada>
 
 # 丸めモード指定用キーワード
 
@@ -11,25 +11,22 @@ Time-stamp: <2017-01-02 20:11:29 hamada>
 ------------------------------
 ## Truncation
 
-<img src="../html/img/Truncation.png">
+![Trancation.png]("img/Truncation.png")
 
+------------------------------
+## Truncation to Zero
 
-![Trancation]("./img/Truncation.png")
+![TruncationToZero.png]("img/TruncationToZero.png")
 
-<!------------------------------------><hr size="0"><a name = "TRUNCZ">
-<h4>Truncation to Zero</h4>
+------------------------------
+## Rounding to Plus Infinity
 
-<img src="img/TruncationToZero.png">
+![RoundingToPlusInfinity.png]("img/RoundingToPlusInfinity.png")
 
-<!------------------------------------><hr size="0"><a name = "RPINF">
-<h4>Rounding to Plus Infinity</h4>
+------------------------------
+## Rounding to Minus Infinity
 
-<img src="img/RoundingToPlusInfinity.png">
-
-<!------------------------------------><hr size="0"><a name = "RMINF">
-<h4>Rounding to Minus Infinity</h4>
-
-<img src="img/RoundingToMinusInfinity.png">
+![RoundingToMinusInfinity.png]("img/RoundingToMinusInfinity.png")
 
 <!------------------------------------><hr size="0"><a name = "RINF">
 <h4>Rounding to Infinity</h4>
