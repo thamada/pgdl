@@ -1,4 +1,4 @@
-Time-stamp: <2017-01-02 20:13:52 hamada>
+Time-stamp: <2017-01-02 20:14:44 hamada>
 
 # 丸めモード指定用キーワード
 
@@ -11,7 +11,7 @@ Time-stamp: <2017-01-02 20:13:52 hamada>
 ------------------------------
 ## Truncation
 
-![Trancation.png]("img/Truncation.png")
+![Trancation.png]("./img/Truncation.png")
 
 ------------------------------
 ## Truncation to Zero
