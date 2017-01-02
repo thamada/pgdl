@@ -1,4 +1,4 @@
-Time-stamp: <2017-01-02 20:09:39 hamada>
+Time-stamp: <2017-01-02 20:11:29 hamada>
 
 # 丸めモード指定用キーワード
 
@@ -14,7 +14,7 @@ Time-stamp: <2017-01-02 20:09:39 hamada>
 <img src="../html/img/Truncation.png">
 
 
-![Trancation]("../html/img/Truncation.png")
+![Trancation]("./img/Truncation.png")
 
 <!------------------------------------><hr size="0"><a name = "TRUNCZ">
 <h4>Truncation to Zero</h4>
