@@ -1,4 +1,4 @@
-Time-stamp: <2017-01-06 08:08:47 hamada>
+Time-stamp: <2017-01-06 08:22:19 hamada>
 
 # pg_float_cos : 浮動小数点型 コサイン(余弦)関数
 
@@ -29,6 +29,12 @@ pg_float_cos(x, z, 33, 23, 3);
 $$
 z = \sin(2\pi x)
 $$
+
+
+```math
+\left( \sum_{k=1}^n a_k b_k \right)^{!!2} \leq
+\left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)
+```
 
 
 ## パイプラインマップ
