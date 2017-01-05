@@ -1,18 +1,18 @@
-Time-stamp: <2017-01-06 08:22:19 hamada>
+Time-stamp: <2017-01-06 08:29:10 hamada>
 
 # pg_float_cos : 浮動小数点型 コサイン(余弦)関数
 
 ## 書式
 
-pg_float_sin(<i>x</i>, <i>z</i>,   <i>NFLO</i>, <i>NMAN</i>, <i>NST</i>);
+pg_float_sin(*x*, *z*,   *NFLO*, *NMAN*, *NST*);
 
 ## 引数
 
-- <i>x</i>: 入力値
-- <i>z</i>: 演算結果 : $\cos(2\pi x)$
-- <i>NFLO</i>: 浮動小数点ワードビット幅
-- <i>NMAN</i>: 仮数部(精度)ビット幅
-- <i>NST</i>: パイプラインステージ数
+- *x*: 入力値
+- *z*: 演算結果 : ```cos(2 pi x)```
+- *NFLO*: 浮動小数点ワードビット幅
+- *NMAN*: 仮数部(精度)ビット幅
+- *NST*: パイプラインステージ数
 
 ## 記述例
 
@@ -26,14 +26,8 @@ pg_float_cos(x, z, 33, 23, 3);
 
 余弦を求める.
 
-$$
-z = \sin(2\pi x)
-$$
-
-
-```math
-\left( \sum_{k=1}^n a_k b_k \right)^{!!2} \leq
-\left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)
+```
+z = sin(2 Pi x)
 ```
 
 
