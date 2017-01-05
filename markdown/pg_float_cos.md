@@ -1,4 +1,4 @@
-Time-stamp: <2017-01-05 23:05:04 hamada>
+Time-stamp: <2017-01-06 08:07:00 hamada>
 
 # pg_float_cos : 浮動小数点型 コサイン(余弦)関数
 
@@ -116,8 +116,8 @@ T.B.D
 </a>
 
 ### nflo 33/ nflo 26/ nflo 18
-<a href="./img/pg_float_cos_33.26.18.png">
-<img src="./img/pg_float_cos_33.26.18.png" width="300">
+<a href="../html/img/pg_float_cos_33.26.18.png">
+<img src="../html/img/pg_float_cos_33.26.18.png" width="300">
 </a>
 
 ## 参照
